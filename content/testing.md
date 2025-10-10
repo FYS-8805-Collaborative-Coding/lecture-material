@@ -70,9 +70,9 @@ from our example project.
 
 ## End-to-end tests
 
-- This is our end-to-end test: <https://github.com/workshop-material/classification-task/blob/main/test.sh>
-- Note how we can run it [on GitHub automatically](https://github.com/workshop-material/classification-task/blob/d5baee6a7600986b5fccc2fca4ee80a90c2d5f69/.github/workflows/test.yml#L28).
-- Also browse <https://github.com/workshop-material/classification-task/actions>.
+- This is our end-to-end test: <https://github.com/FYS-8805-Collaborative-Coding/classification-task/blob/main/test.sh>
+- Note how we can run it [on GitHub automatically](https://github.com/FYS-8805-Collaborative-Coding/classification-task/blob/d5baee6a7600986b5fccc2fca4ee80a90c2d5f69/.github/workflows/test.yml#L28).
+- Also browse <https://github.com/FYS-8805-Collaborative-Coding/classification-task/actions>.
 - If we have time, we can try to create a pull request which would break the
   code and see how the test fails.
 
@@ -120,7 +120,7 @@ Our next goal is that we want GitHub to run the unit test
 automatically on every change.
 
 First we need to extend our
-[environment.yml](https://github.com/workshop-material/classification-task/blob/main/environment.yml):
+[environment.yml](https://github.com/FYS-8805-Collaborative-Coding/classification-task/blob/main/environment.yml):
 ```{code-block} yaml
 ---
 emphasize-lines: 12
@@ -211,7 +211,7 @@ Experiment with the example project and what we learned above or try it **on
 the example project or on your own project**:
 - Add a unit test. **If you are unsure where to start**, you can try to move
   [the majority
-  vote](https://github.com/workshop-material/classification-task/blob/79ce3be8fc187afbc33c91c11ea7003ce9bf56cd/generate_predictions.py#L28)
+  vote](https://github.com/FYS-8805-Collaborative-Coding/classification-task/blob/79ce3be8fc187afbc33c91c11ea7003ce9bf56cd/generate_predictions.py#L28)
   into a separate function and write a test function for it.
 - Try to run pytest locally.
 - Check whether it fails when you break the corresponding function.

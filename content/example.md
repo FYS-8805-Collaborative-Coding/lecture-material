@@ -1,6 +1,6 @@
 # Example project: 2D classification task using a nearest-neighbor predictor
 
-The [example code](https://github.com/workshop-material/classification-task)
+The [example code](https://github.com/FYS-8805-Collaborative-Coding/classification-task)
 that we will study is a relatively simple nearest-neighbor predictor written in
 Python. It is not important or expected that we understand the code in detail.
 
@@ -78,7 +78,7 @@ Saved chart to chart.svg
 
 :::{discussion}
 - Together we look at the generated files (train.csv, test.csv, predictions.csv, chart.svg).
-- We browse and discuss the [example code behind these scripts](https://github.com/workshop-material/classification-task).
+- We browse and discuss the [example code behind these scripts](https://github.com/FYS-8805-Collaborative-Coding/classification-task).
 :::
 
 :::{admonition} Learning goals

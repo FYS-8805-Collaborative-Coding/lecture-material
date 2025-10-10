@@ -59,7 +59,7 @@ or the **upstream repository** (original repository):
 - Upstream repository: https://github.com/**workshop-material**/classification-task
 
 :::{admonition} How to create a fork
-1. Go to the repository view on GitHub: <https://github.com/workshop-material/classification-task>
+1. Go to the repository view on GitHub: <https://github.com/FYS-8805-Collaborative-Coding/classification-task>
 1. First, on GitHub, click the button that says "Fork". It is towards
    the top-right of the screen.
 1. You should shortly be redirected to your copy of the repository
@@ -145,7 +145,7 @@ locally.
 
 :::{exercise} Exercise: Browsing an existing project (20 min)
 
-Browse the [example project](https://github.com/workshop-material/classification-task) and
+Browse the [example project](https://github.com/FYS-8805-Collaborative-Coding/classification-task) and
 explore commits and branches, either on a fork or on a clone.  Take notes and
 prepare questions.  The hints are for the GitHub path in the browser.
 

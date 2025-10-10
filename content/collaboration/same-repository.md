@@ -19,7 +19,7 @@ This means that you propose some change, and then it is accepted (or not).
 
 ::::::{prereq} Exercise preparation
 
-- **First we need to get access** to the [exercise repository](https://github.com/workshop-material/recipe-book) to which we will
+- **First we need to get access** to the [exercise repository](https://github.com/FYS-8805-Collaborative-Coding/recipe-book) to which we will
   contribute.
   - Instructor collects GitHub usernames from learners and adds them as collaborators to the exercise repository
     (Settings -> Collaborators and teams -> Manage access -> Add people).
@@ -68,7 +68,7 @@ This means that you propose some change, and then it is accepted (or not).
 
 **Exercise tasks**:
 1. Start in the [exercise
-   repository](https://github.com/workshop-material/recipe-book) and open an
+   repository](https://github.com/FYS-8805-Collaborative-Coding/recipe-book) and open an
    issue where you describe the change you want to make. Note down the issue
    number since you will need it later.
 1. Create a new branch.
