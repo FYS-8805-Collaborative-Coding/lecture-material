@@ -57,7 +57,7 @@ There are unfortunately many ways to package a Python project:
    ```
    To have a more concrete example, if we package the `generate_data.py` script
    from the [example
-   repository](https://github.com/workshop-material/classification-task), then
+   repository](https://github.com/FYS-8805-Collaborative-Coding/classification-task), then
    replace the name `example` with `generate_data`.
 
 4. We now add dependencies and also an entry point for the script:
