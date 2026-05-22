@@ -42,34 +42,22 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
           
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           
           # Create a physical constraint file to globally block Sphinx 8
           echo "sphinx>=7.4.7,<8.0.0" > constraints.txt
-          echo "websockets>=11.0" >> constraints.txt
           
           # Inject the constraints file into the global PIP configuration
           export PIP_CONSTRAINT=constraints.txt
           
-          # Run the installations with constraints enforced everywhere
-          pip install "sphinx>=7.4.7,<8.0.0" "websockets>=11.0"
+          # Install the base dependencies cleanly
+          pip install "sphinx>=7.4.7,<8.0.0"
           pip install -r requirements.txt
           pip install https://github.com/rkdarst/sphinx_pyppeteer_builder/archive/refs/heads/main.zip
-      # - name: Install dependencies
-      #   run: |
-      #     python -m pip install --upgrade pip
           
-      #     # 1. Force the Sphinx 7 ecosystem constraints globally
-      #     pip install "sphinx>=7.4.7,<8.0.0" "websockets>=11.0"
-          
-      #     # 2. Run the original install command (it will now respect the already-installed versions)
-      #     pip install -r requirements.txt
-          
-      #     # 3. Install the pyppeteer builder here globally
-      #     pip install https://github.com/rkdarst/sphinx_pyppeteer_builder/archive/refs/heads/main.zip
-
         # Debug
       - name: Debugging information
         env:
@@ -108,13 +96,22 @@ jobs:
           make singlehtml
           mv _build/singlehtml/ _build/dirhtml/singlehtml/
 
-      # PDF if requested (FIXED: Removed the rogue pip install step causing the overwrite)
+      # # PDF if requested (FIXED: Removed the rogue pip install step causing the overwrite)
+      # - name: Generate PDF
+      #   if: ${{ env.GENERATE_PDF == 'true' }}
+      #   run: |
+      #     make pyppeteer
+      #     mv _build/pyppeteer/*.pdf _build/dirhtml/${PDF_FILENAME}
+      # PDF if requested
       - name: Generate PDF
         if: ${{ env.GENERATE_PDF == 'true' }}
         run: |
+          # Temporarily downgrade websockets so pyppeteer can use its legacy client API
+          pip install "websockets==9.1" --force-reinstall
+          
           make pyppeteer
           mv _build/pyppeteer/*.pdf _build/dirhtml/${PDF_FILENAME}
-
+          
       # Stage all deployed assets in _gh-pages/ for simplicity
       - name: Copy deployment data to _gh-pages/
         if: ${{ github.event_name == 'push' }}
