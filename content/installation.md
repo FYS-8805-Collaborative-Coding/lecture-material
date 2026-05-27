@@ -111,7 +111,7 @@ Unsure what to download and what to do with it?
 
 First we will start Python in a way that activates conda/mamba.  Then we will
 install the software environment from [this environment.yml
-file](https://raw.githubusercontent.com/coderefinery/reproducible-python-ml/main/software/environment.yml).
+file](https://raw.githubusercontent.com/FYS-8805-Collaborative-Coding/lecture-material/refs/heads/main/software/environment.yml).
 
 An **environment** is a self-contained set of extra libraries - different
 projects can use different environments to not interfere with each other.  This
@@ -127,12 +127,12 @@ We will call the environment `course`.
   Then type
   (without the `$`):
   ```console
-  $ mamba env create -n course -f https://raw.githubusercontent.com/coderefinery/reproducible-python-ml/main/software/environment.yml
+  $ mamba env create -n course -f https://raw.githubusercontent.com/FYS-8805-Collaborative-Coding/lecture-material/refs/heads/main/software/environment.yml
   ```
-  If this throws an error you can download the ``environmet.yml`` file first
+  If this throws an error you can download the ``environment.yml`` file first
   and set up the environment via
   ```console
-  $ curl -O https://raw.githubusercontent.com/coderefinery/reproducible-python-ml/main/software/environment.yml
+  $ curl -O https://raw.githubusercontent.com/FYS-8805-Collaborative-Coding/lecture-material/refs/heads/main/software/environment.yml
   $ mamba env create -n course -f environment.yml
   ```
   :::
@@ -154,7 +154,7 @@ We will call the environment `course`.
 
   In the second step, we will install the software environment:
   ```console
-  $ mamba env create -n course -f https://raw.githubusercontent.com/coderefinery/reproducible-python-ml/main/software/environment.yml
+  $ mamba env create -n course -f https://raw.githubusercontent.com/FYS-8805-Collaborative-Coding/lecture-material/refs/heads/main/software/environment.yml
   ```
   :::
 ::::
