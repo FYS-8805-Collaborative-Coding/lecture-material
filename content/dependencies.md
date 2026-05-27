@@ -116,7 +116,7 @@ Use a **standard way** to list dependencies in your project:
 ## Best practice: Install dependencies into isolated environments
 
 - For each project, create a **separate environment**.
-- Don't install dependencies globally for all projects. Sooner or later, different projects will have conflicting dependencies.
+- Don't install dependencies globally for all projects. Sooner or later, different projects will have conflicting dependencies. With Conda that means don't install into the `base` environment.
 - Install them **from a file** which documents them at the same time
   Install dependencies by first recording them in `requirements.txt` or
   `environment.yml` and install using these files, then you have a trace
@@ -178,7 +178,7 @@ for this course in the {doc}`installation`.
 
 We have used **Miniforge** and the long command we have used was:
 ```console
-$ mamba env create -n course -f https://raw.githubusercontent.com/coderefinery/reproducible-python-ml/main/software/environment.yml
+$ mamba env create -n course -f https://raw.githubusercontent.com/FYS-8805-Collaborative-Coding/lecture-material/refs/heads/main/software/environment.yml
 ```
 
 This command did two things:
@@ -187,6 +187,27 @@ This command did two things:
   `-f`), which we fetched directly from the web.
   [Here](https://github.com/coderefinery/reproducible-python-ml/blob/main/software/environment.yml)
   you can browse it.
+
+
+:::{admonition} Named vs path based Conda environments Conda gives you two
+options to label new environments:
+- either with a name (specified by `-n <name>`) which you later can use to
+  modify it by for example installing new packages with `conda installl -n
+  <name> <new_package>`. You activate named environments with `conda activate
+  <name>`.
+- or by specifying a location where to create and store the environment using
+  `-p <path>`. You can use an absolute path like e.g. `-p
+  /cluster/project/conda-env` or a relative path like e.g. `-p ./conda-env`
+  (which would create the new environment in the current folder). You activate
+  these environments with `conda activate <path>` (again both relative or an
+  solute paths work).
+
+Both ways have pros and cons. Named path can be more easily reused as they can
+be activated from anywhere, but they make it also easy to reuse an environment
+between projects where it would be better to create a new path-based one to
+avoid mixing dependencies. 
+:::
+
 
 For your own projects:
 1. Start by writing an `environment.yml` of `requirements.txt` file. They look like this:
@@ -346,15 +367,13 @@ versions**?
 ## Managing dependencies on a supercomputer
 
 - Additional challenges:
-  - Storage quotas: **Do not install dependencies in your home directory**. A conda environment can easily contain 100k files.
-  - Network file systems struggle with many small files. Conda environments often contain many small files.
+  - Network file systems struggle with many small files. Python environments often contain ten  to hundreds of thousands of small files.
+  - **Do not install dependencies directly on the network file system**. Use container based tools.
 - Possible solutions:
-  - Try [Pixi](https://pixi.sh/) (modern take on managing Conda environments) and
-    [uv](https://docs.astral.sh/uv/) (modern take on managing virtual
-    environments). Blog post: [Using Pixi and uv on a supercomputer](https://research-software.uit.no/blog/2025-pixi-and-uv/)
+  - Containerize your environment into a container image.
+  - Use tools like [HPC-container-wrapper](https://documentation.sigma2.no/hpc_machines/olivia/software_stack.html#python-r-and-ana-conda) or [containerize](https://docs.lumi-supercomputer.eu/software/containers/singularity/#building-containers-using-the-cotainr-tool) to create container based on environment files.
   - Install your environment on the fly into a scratch directory on local disk (**not** the network file system).
   - Install your environment on the fly into a RAM disk/drive.
-  - Containerize your environment into a container image.
 
 ---
 
