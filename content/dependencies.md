@@ -192,7 +192,7 @@ This command did two things:
 :::{admonition} Named vs path based Conda environments Conda gives you two
 options to label new environments:
 - either with a name (specified by `-n <name>`) which you later can use to
-  modify it by for example installing new packages with `conda installl -n
+  modify it by for example installing new packages with `conda install -n
   <name> <new_package>`. You activate named environments with `conda activate
   <name>`.
 - or by specifying a location where to create and store the environment using
