@@ -111,7 +111,7 @@ branch (adapt the names):
 git+https://github.com/ORGANIZATION/REPOSITORY.git@main
 ```
 
-A corresponding `envionment.yml` file for conda would look like this (adapt the
+A corresponding `environment.yml` file for conda would look like this (adapt the
 names):
 ```yaml
 name: experiment
