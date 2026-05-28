@@ -118,7 +118,7 @@ name: experiment
 channels:
   - conda-forge
 dependencies:
-  - python <= 3.12
+  - python <= 3.14
   - pip
   - pip:
       - git+https://github.com/ORGANIZATION/REPOSITORY.git@main
@@ -145,19 +145,21 @@ name: Package
 on:
   release:
     types: [created]
+  workflow_dispatch: # Allows you to run this manually from the Actions tab!
 
 jobs:
   build:
-    permissions: write-all
+    permissions:
+      contents: read  # Required for actions/checkout to clone the repo
     runs-on: ubuntu-24.04
 
     steps:
     - name: Switch branch
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
-        python-version: "3.12"
+        python-version: "3.14"
     - name: Install Flit
       run: |
         pip install flit
@@ -173,8 +175,31 @@ jobs:
 #       pip install --index-url https://test.pypi.org/simple/ package_name
 ```
 
-About the `FLIT_PASSWORD: ${{ secrets.PYPI_TOKEN }}`:
-- You obtain the token from PyPI by going to your account settings and
-  creating a new token.
-- You add the token to your GitHub repository as a secret (here with the name
-  `PYPI_TOKEN`).
+## Step 4: How to securely store the PyPI password
+
+To get this working, you need to store your TestPyPI API token securely in your GitHub repository's secrets.
+
+
+### Step 4.1: Generate your TestPyPI Token
+
+1. Log into [test.pypi.org](https://test.pypi.org/).
+2. Go to your **Account settings**.
+3. Scroll down to the **API tokens** section and click **Add API token**.
+4. Give it a name (e.g., `GitHub Actions CI`) and set the scope (entire account or a specific project).
+5. **Copy the token immediately** (it starts with `pypi-`). You won't be able to see it again.
+
+
+### Step 4.2: Store the Token in GitHub Secrets
+
+1. On GitHub, navigate to the main page of your repository.
+2. Click on the ⚙️ **Settings** tab at the top.
+3. In the left sidebar, expand **Secrets and variables** and click on **Actions**.
+4. Click the green **New repository secret** button in the top right.
+5. Configure the secret exactly like this:
+* **Name:** `PYPI_TOKEN` *(This must exactly match the variable name in your YAML file).*
+* **Secret:** Paste your complete `pypi-...` token here.
+6. Click **Add secret**.
+
+### Step 4.3: Run it
+
+You can trigger the action either from the **Action** tab on top of your GitHub repository or by creating a new release.
