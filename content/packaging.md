@@ -118,7 +118,7 @@ name: experiment
 channels:
   - conda-forge
 dependencies:
-  - python <= 3.12
+  - python <= 3.14
   - pip
   - pip:
       - git+https://github.com/ORGANIZATION/REPOSITORY.git@main
@@ -145,19 +145,21 @@ name: Package
 on:
   release:
     types: [created]
+  workflow_dispatch: # Allows you to run this manually from the Actions tab!
 
 jobs:
   build:
-    permissions: write-all
+    permissions:
+      contents: read  # Required for actions/checkout to clone the repo
     runs-on: ubuntu-24.04
 
     steps:
     - name: Switch branch
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
-        python-version: "3.12"
+        python-version: "3.14"
     - name: Install Flit
       run: |
         pip install flit
